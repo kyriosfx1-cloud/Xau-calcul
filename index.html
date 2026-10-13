@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1220"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"><title>Gold Risk Calculator</title>
+</head>
+<body>
+<header><div class="logo">XAU<span>•</span>PRO</div><div class="header-actions"><button id="themeToggle" class="theme-toggle" type="button" aria-label="Activer le mode clair">☀️ Clair</button><div class="pill">HORS LIGNE</div></div></header>
+<main>
+<section class="hero"><p class="eyebrow">CALCULATEUR DE POSITION</p><h1>Calcule ton <span>lot & TP</span></h1><p class="muted">Entre ton solde, ton entrée et ton stop loss. Le calcul se fait sur ce téléphone, sans connexion.</p></section>
+<section class="panel">
+<div class="section-title">01 — COMPTE & RISQUE</div>
+<div class="grid">
+<label>Solde du compte<input id="balance" type="number" min="0" step="any" value="1000"></label>
+<label>Devise du solde<select id="currency"><option value="USD">USD ($)</option><option value="XOF">FCFA (XOF)</option></select></label>
+<label id="fxWrap" class="hidden">Taux FCFA pour 1 USD<input id="fx" type="number" min="1" step="1" value="600"></label>
+<label>Risque par trade<select id="risk"><option value="10" selected>10 % — très élevé</option><option value="5">5 % — élevé</option><option value="2">2 %</option><option value="1">1 %</option><option value="0.5">0,5 %</option></select></label>
+<label>Ratio risque/gain (RR)<select id="rr"><option value="1">1:1</option><option value="1.5">1:1,5</option><option value="2" selected>1:2</option><option value="3">1:3</option><option value="4">1:4</option></select></label>
+</div>
+</section>
+<section class="panel">
+<div class="section-title">02 — PARAMÈTRES XAUUSD</div>
+<div class="grid">
+<label>Direction<select id="direction"><option value="BUY">BUY — Achat</option><option value="SELL">SELL — Vente</option></select></label>
+<label>Prix d’entrée<input id="entry" type="number" min="0" step="0.01" placeholder="Ex. 4300.00" value="4300"></label>
+<label>Stop loss (prix)<input id="sl" type="number" min="0" step="0.01" placeholder="Ex. 4290.00" value="4290"></label>
+<label>Contrat par lot (oz)<input id="contract" type="number" min="1" step="1" value="100"></label>
+</div>
+<p class="hint">Hypothèse standard XAUUSD : 1 lot = 100 onces. Vérifie la taille de contrat de ton broker.</p>
+</section>
+<section class="result">
+<div class="result-top"><div><p class="eyebrow">TAILLE DE POSITION CONSEILLÉE</p><div class="big" id="lot">0.10 <small>lot</small></div></div><div class="risk-chip"><span>Risque prévu</span><strong id="riskMoney">$100.00</strong></div></div>
+<div class="result-grid">
+<div><span>Take profit (TP)</span><strong id="tp">4320.00</strong></div>
+<div><span>Distance SL</span><strong id="distance">10.00 $</strong></div>
+<div><span>Gain visé</span><strong id="gain">$200.00</strong></div>
+<div><span>Valeur du lot calculé</span><strong id="lotValue">—</strong></div>
+</div>
+<div id="warning" class="warning hidden"></div>
+<button id="recalc" class="primary">Recalculer</button>
+<p class="fine">Calcul indicatif, hors spread, commissions, swaps et glissement. Le risque réel peut être différent. Un risque de 10 % par trade peut faire perdre rapidement le compte.</p>
+</section>
+<section class="panel compact"><div class="section-title">INSTALLATION SUR IPHONE</div><p>Après avoir hébergé les fichiers sur HTTPS, ouvre le site dans Safari, touche <b>Partager</b>, puis <b>Sur l’écran d’accueil</b>. Après le premier chargement, l’application fonctionne hors ligne.</p></section>
+</main><footer>Calcul local • Aucune donnée envoyée en ligne</footer>
+<script src="app.js"></script>
+</body></html>
